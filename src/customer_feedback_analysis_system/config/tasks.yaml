@@ -1,0 +1,29 @@
+research_task:
+  description: >
+    Conduct thorough research on recent customer feedback trends. Focus on common themes such as food quality, service, ambiance, and pricing. These are the reviews: {reviews}
+    Output file should have heading with Research Report and below the report.
+  expected_output: >
+    A list with 5 bullet points of the most relevant trends and patterns in restaurant customer feedback.
+  agent: researcher
+
+sentiment_task:
+  description: >
+    Analyze the following sample customer reviews and classify each as positive, negative, or neutral: these are the reviews: {reviews}. Output file should have heading with Sentiment Analysis and below the table with the reviews and their corresponding sentiment labels.
+  expected_output: >
+    A list of the provided reviews with their corresponding sentiment labels (positive, negative, neutral).
+  agent: sentiment_classifier
+
+reporting_task:
+  description: >
+    Review the research on customer feedback trends and sentiment analysis results.
+    Expand each trend and sentiment finding into a full section for a report.
+    Include actionable recommendations for restaurant improvements. 
+    These are the reviews: {reviews}
+    Output file should have heading with Feedback Analysis Report and below the report.
+  expected_output: >
+    A fully fledged report with main topics, each with a full section of information
+    and at least 3 actionable recommendations. Formatted as markdown without '```'.
+  context:
+    - research_task
+    - sentiment_task
+  agent: reporting_analyst
